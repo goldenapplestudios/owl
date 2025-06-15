@@ -1,0 +1,32 @@
+[workspace]
+members = [
+    "shared/wasm-runtime",
+    "shared/wasi-nn-engine", 
+    "shared/webllm-engine",
+    "shared/communication",
+    "shared/security",
+    "tools/wasm-builder",
+    "tools/model-converter",
+    "tools/deployment-cli"
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Athena Platform Team"]
+license = "MIT"
+repository = "https://github.com/athena-platform/athena-platform"
+
+[workspace.dependencies]
+spin-sdk = "2.0"
+wasmtime = "15.0"
+wit-bindgen = "0.13"
+wasi-nn = "0.6"
+tokio = { version = "1.35", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+bytes = "1.5"

@@ -1,0 +1,29 @@
+[package]
+name = "athena-wasi-nn-engine"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+wasi-nn = { workspace = true }
+wasmtime = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true }
+bytes = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+ndarray = "0.15"
+ort = { version = "1.16", features = ["cuda", "tensorrt"] }
+candle-core = { version = "0.3", features = ["cuda"] }
+candle-nn = "0.3"
+candle-transformers = "0.3"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["gpu"]
+gpu = ["ort/cuda", "candle-core/cuda"]
+cpu = []

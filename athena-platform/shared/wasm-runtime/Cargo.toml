@@ -1,0 +1,23 @@
+[package]
+name = "athena-wasm-runtime"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+wasmtime = { workspace = true }
+wit-bindgen = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true }
+bytes = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["component-model"]
+component-model = []

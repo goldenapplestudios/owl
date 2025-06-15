@@ -1,0 +1,31 @@
+spin_manifest_version = 2
+
+[application]
+name = "athena-{{agent_name}}"
+version = "0.1.0"
+description = "{{AgentDescription}}"
+authors = ["Athena Platform Team"]
+
+[application.trigger]
+type = "http"
+base = "/"
+
+[[trigger.http]]
+id = "athena-{{agent_name}}"
+component = "athena-{{agent_name}}"
+route = "/..."
+
+[component.athena-{{agent_name}}]
+source = "target/wasm32-wasi/release/athena_{{agent_name}}.wasm"
+allowed_outbound_hosts = [
+    "http://localhost:3000",
+    "https://*"
+]
+ai_models = ["llama2-chat", "all-minilm-l6-v2"]
+
+[component.athena-{{agent_name}}.build]
+command = "cargo build --target wasm32-wasi --release"
+
+[component.athena-{{agent_name}}.variables]
+agent_id = "{{agent_name}}-001"
+agent_type = "{{AgentType}}"

@@ -1,0 +1,27 @@
+[package]
+name = "athena-security"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+anyhow = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true }
+bytes = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+ring = "0.17"
+base64 = "0.21"
+argon2 = "0.5"
+jsonwebtoken = "9.2"
+uuid = { version = "1.6", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+sha2 = "0.10"
+hmac = "0.12"
+aes-gcm = "0.10"
+rand = "0.8"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
